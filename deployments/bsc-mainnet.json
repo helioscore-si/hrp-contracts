@@ -1,0 +1,102 @@
+{
+  "chainId": 56,
+  "blockNumber": 135486561,
+  "blockHash": "0x0e8eb873c1e8b77a5f10c89a71b432861d165b216ac80234b12663e8d6d5c0dc",
+  "checkedAt": "2026-11-24T15:25:59.279Z",
+  "compiler": "0.8.38+commit.1835d247.Emscripten.clang",
+  "optimizer": {
+    "enabled": true,
+    "runs": 200
+  },
+  "evmVersion": "paris",
+  "independentAudit": false,
+  "contracts": {
+    "HRPToken": {
+      "address": "0x4c1B827fB12033f67BA0Cc2B5E56acbd777FF1A4",
+      "exactRuntimeMatch": true,
+      "runtimeKeccak256": "0x09e6c4e4cda461ded2ceb1b91e6df5a04498ca3dc5fd67f0d22997fd8f1cec33",
+      "sourceSHA256": "c6cffe5ee8c3866e338f08e06b7bedd6bde01a121ddf0a36a2607da84cbae101",
+      "immutables": {
+        "companyVault": "0xf8505D8960CDF2C35aEDe0C71b279839801b2C72",
+        "reserveVault": "0xA88766228B19BAb69da8C958E9834D95Bd046891",
+        "initialSupply": "20000000000000000000000000",
+        "reserveAmount": "400000000000000000000000"
+      },
+      "state": {
+        "owner": "0xBabfE0Fc7C1de0d283B2cf95E61D570aBF5E6c79",
+        "name": "HELIOS PRIME",
+        "symbol": "HRP",
+        "decimals": "18",
+        "totalSupply": "20000000000000000000000000",
+        "sale": "0x36BE17219da82f050e7A17B69e6C9da293614074",
+        "transfersEnabled": false,
+        "transferPolicyRevision": "4"
+      }
+    },
+    "TokenSale": {
+      "address": "0x36BE17219da82f050e7A17B69e6C9da293614074",
+      "exactRuntimeMatch": true,
+      "runtimeKeccak256": "0x80e935a0c7b568c3f81a57faeb3e15cd1f92f961229df7756109da3dfc807369",
+      "sourceSHA256": "eec6982afd215ee13c3ce9aa86970df447562c93f5d7ea8ba642b9297e9f05dc",
+      "immutables": {
+        "token": "0x4c1B827fB12033f67BA0Cc2B5E56acbd777FF1A4",
+        "paymentToken": "0x55d398326f99059fF775485246999027B3197955",
+        "initialTreasury": "0x9aEa67262b88f34a9eDd4dB2d3a9b7Ad92e88fd9",
+        "closesAt": "1800860400",
+        "paymentDecimals": "18",
+        "usdtPerLot": "100000000000000000000",
+        "fundingAmount": "3790000000000000000000000",
+        "requiredInventory": "3790000000000000000000000"
+      },
+      "state": {
+        "owner": "0xA2aA81FCF7dd61D77bd09AFF680c997Ca989E437",
+        "treasury": "0x9aEa67262b88f34a9eDd4dB2d3a9b7Ad92e88fd9",
+        "paused": false,
+        "currentRound": "0",
+        "admissionSigner": "0x43819C44812a7108f8eAa3b2a8dc01EE1F87AcD8",
+        "settlementOperator": "0x43819C44812a7108f8eAa3b2a8dc01EE1F87AcD8",
+        "externalLotLimit": "27000",
+        "roundCapsLots": [
+          "2000",
+          "6000",
+          "8000",
+          "10000",
+          "1000"
+        ],
+        "bonusRatesBps": [
+          "10000",
+          "6000",
+          "4000",
+          "2000",
+          "1000"
+        ]
+      }
+    }
+  },
+  "sharedOwner": false,
+  "governance": [
+    {
+      "address": "0xBabfE0Fc7C1de0d283B2cf95E61D570aBF5E6c79",
+      "threshold": "2",
+      "owners": [
+        "0x76c82FF3419Fc476a555c3D52f2c1746a155c912",
+        "0x09E22A480b5eEe1b4D30d304a1c1Ac3F1E1FA597"
+      ],
+      "modules": [],
+      "next": "0x0000000000000000000000000000000000000001"
+    },
+    {
+      "address": "0xA2aA81FCF7dd61D77bd09AFF680c997Ca989E437",
+      "threshold": "2",
+      "owners": [
+        "0xD2419f640CB4E14deFb211e90D0ADe857aB1e7fa",
+        "0x333C6c4D704d44CC12BD2A62d4A84Eea05dabbA0"
+      ],
+      "modules": [],
+      "next": "0x0000000000000000000000000000000000000001"
+    }
+  ],
+  "warnings": [
+    "Token and sale have different owners at this block. Sale methods using _requireGovernance require matching ownership; this report does not change that state."
+  ]
+}
