@@ -1,0 +1,20 @@
+{
+  "name": "helios-hrp-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "description": "Source disclosure and reproducible tests for deployed HELIOS PRIME contracts on BNB Smart Chain",
+  "scripts": {
+    "compile": "node scripts/compile.mjs",
+    "test": "npm run compile && node --test test/contracts.test.mjs",
+    "verify:mainnet": "node scripts/verify-mainnet.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": {
+    "@openzeppelin/contracts": "5.6.1",
+    "ethers": "6.17.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.38"
+  }
+}
