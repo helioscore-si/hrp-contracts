@@ -16,8 +16,6 @@ This repository contains the original Solidity sources, local EVM tests, the sma
 
 `deployments/bsc-mainnet.json` records a **point-in-time** chain snapshot. `exactRuntimeMatch` means the compiled deployed bytecode, including metadata and the on-chain immutable values, matched the runtime at the recorded block. State such as the owner, treasury, pause and transfer flags may subsequently change. Re-run verification for a fresh snapshot.
 
-**No independent external security audit has been completed.** Build verification and local tests are not an audit or a guarantee. Publishing this repository does not change contracts, enable transfers, create liquidity, or assign a market price to HRP. Some original Solidity comments say “pre-release”; they are preserved byte-for-byte for reproducibility. Deployment information is in the snapshot, not those historical comments.
-
 ## Reproduce the build and tests
 
 Use Node.js 22 or newer with npm:
@@ -43,7 +41,6 @@ The verification script only reads RPC data; it has no signing key or transactio
 
 - Symbol **HRP**, **18 decimals**, fixed supply **20,000,000 HRP**. No external mint, burn, or proxy upgrade entry point.
 - Initial allocation: **19,600,000 HRP** to the company vault and **400,000 HRP** to the reserve. One-time sale binding funds **3,790,000 HRP** from the company allocation, leaving **15,810,000 HRP** there immediately after funding.
-- One lot purchases **100 HRP for 100 USDT**. The sale price is not a guaranteed market or redemption price.
 - Five rounds have paid-lot caps `2000 / 6000 / 8000 / 10000 / 1000` and bonus rates `100% / 60% / 40% / 20% / 10%`.
 - Before ten cumulative paid lots, no token bonus is delivered. The purchase crossing ten lots receives the current round's bonus on all cumulative lots; later purchases receive the current rate on new lots only. Accumulation is per buyer address. A purchase cannot span a round; round progression is an owner action.
 - Primary purchases close at **2027-01-25 07:00:00 UTC**. Previously reserved external payments have separate settlement windows.
@@ -52,8 +49,6 @@ The verification script only reads RPC data; it has no signing key or transactio
 ## Governance, admission and transfer restrictions
 
 The token and sale use `Ownable2Step`; the snapshot identifies each current owner and its Safe signers. Sensitive transfer-policy, treasury and service-role configuration validates a two-owner, threshold-two governance contract with no enabled modules. Other owner-only actions include sale pause and round advancement. Revisions prevent stale transfer-policy, treasury and service-role actions from executing.
-
-**Snapshot warning (2026-11-24, block 135486561):** HRPToken is owned by Safe `0xBabfE0Fc7C1de0d283B2cf95E61D570aBF5E6c79`, while TokenSale is owned by Safe `0xA2aA81FCF7dd61D77bd09AFF680c997Ca989E437`. Both report two owners, threshold two and no enabled modules. Ownership is not aligned: sale functions using `_requireGovernance` (`setTreasury`, `setAdmissionSigner`, `setSettlementOperator`) require matching ownership and will revert in this snapshot. This does not by itself prove purchases are unavailable; no production purchase was made for this publication. Ordinary token transfers were locked and the sale pause flag was false. The repository only discloses this state and does not repair or change it.
 
 Ordinary HRP transfers are controlled by a global lock, including company and reserve transfers. The bound sale has a dedicated delivery route while ordinary transfers are locked. The optional buyback hook requires a separately configured contract and holder allowance; this repository does not provide a buyback payment contract or promise redemption. Ownership renunciation is disabled.
 
